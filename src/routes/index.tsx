@@ -59,6 +59,8 @@ const channels = [
     name: "Formulario",
     total: 52,
     themeClass: "cala-blue",
+    dotClass: "bg-cala-blue",
+    totalClass: "text-cala-blue",
     buyers: [
       { label: "Abuyer", count: 12, pct: 23, barClass: "bg-cala-a-fg" },
       { label: "Bbuyer", count: 21, pct: 40, barClass: "bg-cala-b-fg" },
