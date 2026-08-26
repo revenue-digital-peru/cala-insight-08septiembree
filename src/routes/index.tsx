@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/cala_logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -20,31 +21,36 @@ const kpis = [
     label: "Total leads (pauta)",
     value: "144",
     sub: "Formulario + WhatsApp Ads · generados en agosto",
-    color: "cala-purple-500",
+    borderClass: "border-t-cala-purple-500",
+    valueClass: "text-cala-purple-500",
   },
   {
     label: "Leads clasificados",
     value: "103",
     sub: "71.5% del total · A+B+C buyer",
-    color: "cala-blue",
+    borderClass: "border-t-cala-blue",
+    valueClass: "text-cala-blue",
   },
   {
     label: "Agendaron VG",
     value: "169",
     sub: "Base VG oficial · Fecha VG en agosto",
-    color: "cala-green",
+    borderClass: "border-t-cala-green",
+    valueClass: "text-cala-green",
   },
   {
     label: "Asistieron VG",
     value: "29",
     sub: "17.2% de las agendadas",
-    color: "cala-orange",
+    borderClass: "border-t-cala-orange",
+    valueClass: "text-cala-orange",
   },
   {
     label: "Pagos de Admisión (PA)",
     value: "10",
     sub: "5.9% de las agendadas · +2 'Después de VG'",
-    color: "cala-pink",
+    borderClass: "border-t-cala-pink",
+    valueClass: "text-cala-pink",
   },
 ];
 
@@ -52,30 +58,30 @@ const channels = [
   {
     name: "Formulario",
     total: 52,
-    themeColor: "cala-blue",
+    themeClass: "cala-blue",
     buyers: [
-      { label: "Abuyer", count: 12, pct: 23, color: "cala-a-fg" },
-      { label: "Bbuyer", count: 21, pct: 40, color: "cala-b-fg" },
-      { label: "Cbuyer", count: 19, pct: 37, color: "cala-c-fg" },
-      { label: "Sin clasificar", count: 0, pct: 0, color: "cala-n-fg" },
+      { label: "Abuyer", count: 12, pct: 23, barClass: "bg-cala-a-fg" },
+      { label: "Bbuyer", count: 21, pct: 40, barClass: "bg-cala-b-fg" },
+      { label: "Cbuyer", count: 19, pct: 37, barClass: "bg-cala-c-fg" },
+      { label: "Sin clasificar", count: 0, pct: 0, barClass: "bg-cala-n-fg" },
     ],
     footer: { confirmaron: 15, asistieron: 7, pa: 2 },
     note: "+1 'Después de VG' no incluido en el PA",
-    footerGradient: "from-cala-form-footer-start",
+    footerGradientClass: "from-cala-form-footer-start",
   },
   {
     name: "WhatsApp Ads",
     total: 92,
-    themeColor: "cala-purple-accent",
+    themeClass: "cala-purple-accent",
     buyers: [
-      { label: "Abuyer", count: 18, pct: 20, color: "cala-a-fg" },
-      { label: "Bbuyer", count: 22, pct: 24, color: "cala-b-fg" },
-      { label: "Cbuyer", count: 11, pct: 12, color: "cala-c-fg" },
-      { label: "Sin clasificar", count: 41, pct: 45, color: "cala-n-fg" },
+      { label: "Abuyer", count: 18, pct: 20, barClass: "bg-cala-a-fg" },
+      { label: "Bbuyer", count: 22, pct: 24, barClass: "bg-cala-b-fg" },
+      { label: "Cbuyer", count: 11, pct: 12, barClass: "bg-cala-c-fg" },
+      { label: "Sin clasificar", count: 41, pct: 45, barClass: "bg-cala-n-fg" },
     ],
     footer: { confirmaron: 16, asistieron: 2, pa: 0 },
     note: "0 casos 'Después de VG'",
-    footerGradient: "from-cala-whatsapp-footer-start",
+    footerGradientClass: "from-cala-whatsapp-footer-start",
   },
 ];
 
@@ -117,19 +123,21 @@ function KPICard({
   label,
   value,
   sub,
-  color,
+  borderClass,
+  valueClass,
 }: {
   label: string;
   value: string;
   sub: string;
-  color: string;
+  borderClass: string;
+  valueClass: string;
 }) {
   return (
-    <div className={`rounded-[14px] border-t-[3px] border-t-${color} bg-white p-4 shadow-sm`}>
+    <div className={cn("rounded-[14px] border-t-[3px] bg-white p-4 shadow-sm", borderClass)}>
       <div className="text-[10px] font-bold uppercase tracking-wider text-cala-gray-600">
         {label}
       </div>
-      <div className={`font-space mt-2 text-[28px] font-bold leading-none text-${color}`}>
+      <div className={cn("font-space mt-2 text-[28px] font-bold leading-none", valueClass)}>
         {value}
       </div>
       <div className="mt-1.5 text-[11px] text-cala-gray-600">{sub}</div>
@@ -140,28 +148,28 @@ function KPICard({
 function ChannelCard({
   name,
   total,
-  themeColor,
+  themeClass,
   buyers,
   footer,
   note,
-  footerGradient,
+  footerGradientClass,
 }: {
   name: string;
   total: number;
-  themeColor: string;
-  buyers: { label: string; count: number; pct: number; color: string }[];
+  themeClass: string;
+  buyers: { label: string; count: number; pct: number; barClass: string }[];
   footer: { confirmaron: number; asistieron: number; pa: number };
   note: string;
-  footerGradient: string;
+  footerGradientClass: string;
 }) {
   return (
-    <div className="rounded-[14px] bg-white p-5 sm:p-6 shadow-sm">
+    <div className="rounded-[14px] bg-white p-5 shadow-sm sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm font-bold">
-          <span className={`h-2.5 w-2.5 rounded-full bg-${themeColor}`} />
+          <span className={cn("h-2.5 w-2.5 rounded-full", `bg-${themeClass}`)} />
           {name}
         </div>
-        <div className={`font-space text-[22px] font-bold text-${themeColor}`}>
+        <div className={cn("font-space text-[22px] font-bold", `text-${themeClass}`)}>
           {total}
         </div>
       </div>
@@ -170,9 +178,9 @@ function ChannelCard({
         {buyers.map((b) => (
           <div key={b.label} className="grid grid-cols-[80px_1fr_40px] items-center gap-2.5 text-xs sm:text-[13px]">
             <span className="font-semibold text-cala-gray-900">{b.label}</span>
-            <div className="h-2 rounded-md bg-cala-gray-100 overflow-hidden">
+            <div className="h-2 overflow-hidden rounded-md bg-cala-gray-100">
               <div
-                className={`h-full rounded-md bg-${b.color}`}
+                className={cn("h-full rounded-md", b.barClass)}
                 style={{ width: `${b.pct}%` }}
               />
             </div>
@@ -183,7 +191,12 @@ function ChannelCard({
         ))}
       </div>
 
-      <div className={`mt-4 grid grid-cols-3 gap-1.5 rounded-[10px] bg-linear-0 ${footerGradient} to-transparent px-1.5 pt-3.5 pb-1`}>
+      <div
+        className={cn(
+          "mt-4 grid grid-cols-3 gap-1.5 rounded-[10px] bg-linear-0 to-transparent px-1.5 pb-1 pt-3.5",
+          footerGradientClass
+        )}
+      >
         <div className="text-center">
           <div className="font-space text-xl font-bold text-cala-gray-900">
             {footer.confirmaron}
