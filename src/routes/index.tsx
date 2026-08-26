@@ -58,7 +58,6 @@ const channels = [
   {
     name: "Formulario",
     total: 52,
-    themeClass: "cala-blue",
     dotClass: "bg-cala-blue",
     totalClass: "text-cala-blue",
     buyers: [
