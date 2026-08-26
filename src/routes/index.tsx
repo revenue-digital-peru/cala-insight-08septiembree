@@ -73,7 +73,6 @@ const channels = [
   {
     name: "WhatsApp Ads",
     total: 92,
-    themeClass: "cala-purple-accent",
     dotClass: "bg-cala-purple-accent",
     totalClass: "text-cala-purple-accent",
     buyers: [
