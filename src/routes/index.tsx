@@ -152,7 +152,8 @@ function KPICard({
 function ChannelCard({
   name,
   total,
-  themeClass,
+  dotClass,
+  totalClass,
   buyers,
   footer,
   note,
@@ -160,7 +161,8 @@ function ChannelCard({
 }: {
   name: string;
   total: number;
-  themeClass: string;
+  dotClass: string;
+  totalClass: string;
   buyers: { label: string; count: number; pct: number; barClass: string }[];
   footer: { confirmaron: number; asistieron: number; pa: number };
   note: string;
@@ -170,10 +172,10 @@ function ChannelCard({
     <div className="rounded-[14px] bg-white p-5 shadow-sm sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm font-bold">
-          <span className={cn("h-2.5 w-2.5 rounded-full", `bg-${themeClass}`)} />
+          <span className={cn("h-2.5 w-2.5 rounded-full", dotClass)} />
           {name}
         </div>
-        <div className={cn("font-space text-[22px] font-bold", `text-${themeClass}`)}>
+        <div className={cn("font-space text-[22px] font-bold", totalClass)}>
           {total}
         </div>
       </div>
