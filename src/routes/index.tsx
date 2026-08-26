@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
 const kpis = [
   {
     label: "Total leads (pauta)",
-    value: "144",
+    value: "180",
     sub: "Formulario + WhatsApp Ads · generados en agosto",
     borderClass: "border-t-cala-purple-500",
     valueClass: "text-cala-purple-500",
