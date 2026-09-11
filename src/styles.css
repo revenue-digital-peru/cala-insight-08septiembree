@@ -89,6 +89,32 @@
   --color-cala-note-bold: #5c4408;
   --color-cala-form-footer-start: #eaf1fe80;
   --color-cala-whatsapp-footer-start: #f4eefe80;
+  --color cala-none: initial;
+  --color-cp-purple-1: #6d28d9;
+  --color-cp-purple-2: #9333ea;
+  --color-cp-purple-3: #a855f7;
+  --color-cp-blue: #3b5bfd;
+  --color-cp-green: #22a559;
+  --color-cp-orange: #f97316;
+  --color-cp-gray-bg: #f4f4f7;
+  --color-cp-border: #e5e7eb;
+  --color-cp-text: #111827;
+  --color-cp-muted: #6b7280;
+  --color-cp-track: #f1f1f4;
+  --color-cp-fill-sin: #c7c9d1;
+  --color-cp-tag-a-bg: #dcfce7;
+  --color-cp-tag-a-fg: #15803d;
+  --color-cp-tag-b-bg: #dbeafe;
+  --color-cp-tag-b-fg: #1d4ed8;
+  --color-cp-tag-c-bg: #ffedd5;
+  --color-cp-tag-c-fg: #c2410c;
+  --color-cp-tag-sin-bg: #f3f4f6;
+  --color-cp-tag-sin-fg: #9ca3af;
+  --color-cp-strip-blue: #eaf0ff;
+  --color-cp-strip-purple: #f2eaff;
+  --color-cp-warn-bg: #fff7ed;
+  --color-cp-warn-fg: #c2410c;
+
 }
 
 :root {
