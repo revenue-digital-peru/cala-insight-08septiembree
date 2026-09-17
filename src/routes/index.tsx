@@ -50,7 +50,7 @@ const SEPTEMBER_VG = "2026-09-17T08:00:00-05:00";
 const OCTOBER_VG = "2026-10-01T08:00:00-05:00";
 const PAST_VG = "2026-09-10T08:00:00-05:00";
 
-const upcomingLeads: Lead[] = [
+const septemberVisitRows = [
   ["Katherine Milagritos Machuca", "Otro", "Sin clasif.", "Nursery (2027)"],
   ["Pamela Venegas", "Formulario", "Bbuyer", "Nursery (2027)"],
   ["Ingrid Prieto Hernández", "Formulario", "Cbuyer", "Nursery (2027)"],
@@ -71,7 +71,9 @@ const upcomingLeads: Lead[] = [
   ["Paulo Cisneros", "Otro", "Sin clasif.", "Kinder (2027)"],
   ["Karol Cañete", "Otro", "Abuyer", "Nursery (2027)"],
   ["Melva Cayotopa", "WhatsApp Ads", "Abuyer", "Kinder (2027)"],
-].map(([nombre, canal, buyer, grado_interes], index) => ({
+] satisfies Array<[string, Canal, Buyer, string]>;
+
+const upcomingLeads: Lead[] = septemberVisitRows.map(([nombre, canal, buyer, grado_interes], index) => ({
   id: `vg-sep-${index + 1}`,
   nombre,
   canal: canal as Canal,
@@ -83,8 +85,7 @@ const upcomingLeads: Lead[] = [
   grado_interes,
 }));
 
-upcomingLeads.push(
-  ...[
+const octoberVisitRows = [
     ["Frank Mateo Robles", "Formulario", "Abuyer", "Nursery (2027)"],
     ["Daniela Villega", "Formulario", "Abuyer", "Kinder (2027)"],
     ["Victor Chura", "Formulario", "Abuyer", "Nursery (2027)"],
@@ -93,7 +94,10 @@ upcomingLeads.push(
     ["Samira De La Cruz", "Formulario", "Cbuyer", "Nursery (2027)"],
     ["Cintya Cordova", "Otro", "Sin clasif.", "Nursery (2027)"],
     ["Suzzetty Ching", "Otro", "Sin clasif.", "Kinder (2027)"],
-  ].map(([nombre, canal, buyer, grado_interes], index) => ({
+] satisfies Array<[string, Canal, Buyer, string]>;
+
+upcomingLeads.push(
+  ...octoberVisitRows.map(([nombre, canal, buyer, grado_interes], index) => ({
     id: `vg-oct-${index + 1}`,
     nombre,
     canal: canal as Canal,
@@ -118,7 +122,7 @@ function createSampleLeads(): Lead[] {
       id: `past-form-${index + 1}`,
       nombre: `Lead Formulario ${index + 1}`,
       canal: "Formulario" as const,
-      buyer: (["Abuyer", "Bbuyer", "Cbuyer"] as Buyer[])[index],
+      buyer: (["Abuyer", "Bbuyer", "Cbuyer"] as const)[index] ?? "Cbuyer",
       agendo_vg: true,
       confirmo_vg: true,
       asistio_vg: true,
@@ -129,7 +133,9 @@ function createSampleLeads(): Lead[] {
       id: `past-wa-${index + 1}`,
       nombre: `Lead WhatsApp ${index + 1}`,
       canal: "WhatsApp Ads" as const,
-      buyer: (["Abuyer", "Bbuyer", "Cbuyer", "Sin clasif."] as Buyer[])[index % 4],
+      buyer:
+        (["Abuyer", "Bbuyer", "Cbuyer", "Sin clasif."] as const)[index % 4] ??
+        "Sin clasif.",
       agendo_vg: true,
       confirmo_vg: index < 9,
       asistio_vg: index < 9,
@@ -235,7 +241,7 @@ function PerformanceDashboard() {
     {
       label: "Total leads de pauta",
       value: dashboard.pauta.length,
-      note: `${dashboard.channels[0].leads.length} Formulario + ${dashboard.channels[1].leads.length} WhatsApp Ads`,
+      note: `${dashboard.pauta.filter((lead) => lead.canal === "Formulario").length} Formulario + ${dashboard.pauta.filter((lead) => lead.canal === "WhatsApp Ads").length} WhatsApp Ads`,
       border: "border-t-cala-blue",
     },
     {
