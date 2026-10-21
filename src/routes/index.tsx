@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Leads de pauta Facebook Ads (Formulario + WhatsApp Ads), clasificación buyer y visitas guiadas de CALA · Octubre 2026 (corte al 13 de octubre).",
+          "Leads de pauta Facebook Ads (Formulario + WhatsApp Ads), clasificación buyer y visitas guiadas de CALA · Octubre 2026 (corte al 20 de octubre).",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
