@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Agosto2026RouteImport } from './routes/agosto-2026'
+import { Route as Setiembre2026RouteImport } from './routes/setiembre-2026'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const Agosto2026Route = Agosto2026RouteImport.update({
   path: '/agosto-2026',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Setiembre2026Route = Setiembre2026RouteImport.update({
+  id: '/setiembre-2026',
+  path: '/setiembre-2026',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agosto-2026': typeof Agosto2026Route
+  '/setiembre-2026': typeof Setiembre2026Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agosto-2026': typeof Agosto2026Route
+  '/setiembre-2026': typeof Setiembre2026Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agosto-2026': typeof Agosto2026Route
+  '/setiembre-2026': typeof Setiembre2026Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agosto-2026'
+  fullPaths: '/' | '/agosto-2026' | '/setiembre-2026'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agosto-2026'
-  id: '__root__' | '/' | '/agosto-2026'
+  to: '/' | '/agosto-2026' | '/setiembre-2026'
+  id: '__root__' | '/' | '/agosto-2026' | '/setiembre-2026'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Agosto2026Route: typeof Agosto2026Route
+  Setiembre2026Route: typeof Setiembre2026Route
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Agosto2026RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/setiembre-2026': {
+      id: '/setiembre-2026'
+      path: '/setiembre-2026'
+      fullPath: '/setiembre-2026'
+      preLoaderRoute: typeof Setiembre2026RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Agosto2026Route: Agosto2026Route,
+  Setiembre2026Route: Setiembre2026Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
