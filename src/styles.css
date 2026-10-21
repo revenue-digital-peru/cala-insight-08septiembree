@@ -145,6 +145,24 @@
   --color-ca-strip-f: #e6f2fc;
   --color-ca-strip-w: #ece5f7;
 
+  /* CALA · Meta Ads — Performance Octubre 2026 */
+  --color-oc-bg: #f4f5f9;
+  --color-oc-tx: #1f2333;
+  --color-oc-mu: #5b6070;
+  --color-oc-track: #e7e8ee;
+  --color-oc-navy: #1f1b4d;
+  --color-oc-bl: #3f51a8;
+  --color-oc-gr: #4f7d3c;
+  --color-oc-br: #a8603a;
+  --color-oc-pu: #4b2a7a;
+  --color-oc-gy: #a8abb5;
+  --color-oc-bl-soft: #e4e9f7;
+  --color-oc-gr-soft: #e8f1e3;
+  --color-oc-br-soft: #f8e9df;
+  --color-oc-gy-soft: #eceef2;
+  --color-oc-pu-soft: #e9e3f4;
+  --color-oc-tag: #b8673b;
+
 }
 
 :root {
